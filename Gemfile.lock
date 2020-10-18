@@ -152,6 +152,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.2.0)
       ast (~> 2.4.1)
+    pg (1.2.3)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -306,6 +307,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.1)
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  pg (~> 1.2)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   rspec-rails (~> 4.0)

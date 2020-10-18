@@ -13,9 +13,9 @@
 
   <tbody>
     <% @lists.each do |list| %>
-      <tr>
-        <td><%= list.name %></td>
-        <td><%= list.user.name %></td>
+      <tr class='list' id="lista_<%=list.id%>">
+        <td id="lista_<%=list.id%>_name" ><%= list.name %></td>
+        <td id="lista_<%=list.id%>_user" ><%= list.user.name %></td>
         <td><%= link_to 'Show', list %></td>
      </tr>
     <% end %>

@@ -57,3 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem "cucumber", "~> 5.1"
+
+gem "factory_bot", "~> 6.1"
+
+gem "factory_bot_rails", "~> 6.1"

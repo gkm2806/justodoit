@@ -2,6 +2,7 @@
   <h1> Bem vindo <%= user.name%>! </h1>
   | <%= link_to "minhas listas", user_lists_path(user.id) %>
 <%else%>
+  <h1> Bem vindo, estranho! </h1>
   | <%= link_to "Log in", new_user_session_path %>
   | <%= link_to "Sign up", new_user_registration_path %>
 <%end%>

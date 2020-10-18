@@ -61,3 +61,6 @@ gem "cucumber", "~> 5.1"
 gem "factory_bot", "~> 6.1"
 
 gem "factory_bot_rails", "~> 6.1"
+
+gem "rubocop", "~> 0.93.1"
+gem "rubocop-rails", "~> 2.8"

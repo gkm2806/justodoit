@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '2.7.0'
 
@@ -26,22 +26,22 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem "devise", "~> 4.7"
+gem 'devise', '~> 4.7'
 
-gem "rubocop", "~> 0.93.1"
-gem "rubocop-rails", "~> 2.8"
+gem 'rubocop', '~> 0.93.1'
+gem 'rubocop-rails', '~> 2.8'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec-rails", "~> 4.0"
+  gem 'rspec-rails', '~> 4.0'
 
-  gem "cucumber", "~> 5.1"
+  gem 'cucumber', '~> 5.1'
 
-  gem "factory_bot", "~> 6.1"
-  gem "factory_bot_rails", "~> 6.1"
+  gem 'factory_bot', '~> 6.1'
+  gem 'factory_bot_rails', '~> 6.1'
 end
 
 group :development do
@@ -62,8 +62,7 @@ group :test do
 end
 
 group :production do
-  gem "pg", "~> 1.2"
+  gem 'pg', '~> 1.2'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-

@@ -2,10 +2,9 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lists = List.where(shared: true)
+    @lists = List.where(shared: true).where.not(user: current_user)
   end
 
-  
   def create
     @list = current_user.lists.new(list_params)
 

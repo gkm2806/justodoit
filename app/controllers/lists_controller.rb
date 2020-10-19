@@ -8,15 +8,8 @@ class ListsController < ApplicationController
   def create
     @list = current_user.lists.new(list_params)
 
-    respond_to do |format|
-      if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
-    end
+    return render json: @list.errors, status: :unprocessable_entity unless @list.save
+    redirect_to @list, notice: 'List was successfully created.' 
   end
 
   private

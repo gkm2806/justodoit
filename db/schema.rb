@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_052325) do
+ActiveRecord::Schema.define(version: 2020_10_19_011351) do
 
   create_table "items", force: :cascade do |t|
     t.integer "itemable_id"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_10_18_052325) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "user_favorited_lists", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_user_favorited_lists_on_list_id"
+    t.index ["user_id"], name: "index_user_favorited_lists_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -45,4 +54,6 @@ ActiveRecord::Schema.define(version: 2020_10_18_052325) do
   end
 
   add_foreign_key "lists", "users"
+  add_foreign_key "user_favorited_lists", "lists"
+  add_foreign_key "user_favorited_lists", "users"
 end

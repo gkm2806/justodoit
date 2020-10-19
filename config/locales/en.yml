@@ -30,9 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-   active_record:
-    models:
+  active_record:
     attributes:
       default_attributes: &default_attributes
         id: '#'

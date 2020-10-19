@@ -30,4 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  active_record:
+    attributes:
+      default_attributes: &default_attributes
+        id: '#'
+        created_at: creation date
+        updated_at: update date
+      list:
+        <<: *default_attributes
+        shared: public
+        checked: completed
+        user: owner
+  shared:
+    actions:
+      actions: actions
+      show: show
+      edit: edit
+      destroy: destroy
+      favorite: favorite
+    user_actions:
+      title: Welcome, %{name}!
+      unknown_title: Welcome, Mysterious Stranger!

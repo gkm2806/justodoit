@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe List, type: :model do
   context 'validation tests' do
     it 'ensures name presence' do
-      list = List.new
+      @user = FactoryBot.create(:user)
+      list = @user.lists.new
       expect(list.save).to eq(false)
     end
 
@@ -13,8 +14,8 @@ RSpec.describe List, type: :model do
     end
 
     it 'should save successfully' do
-      user = FactoryBot.create(:user)
-      list = user.lists.new(name: 'Compras 11/2020')
+      @user = FactoryBot.create(:user)
+      list = @user.lists.new(name: 'Compras 11/2020')
       expect(list.save).to eq(true)
     end
   end

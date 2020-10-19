@@ -1,4 +1,6 @@
 class List < ApplicationRecord
+  validates :name, presence: true
+
   belongs_to :user
   has_many :items, as: :itemable
   has_many :user_favorited_lists

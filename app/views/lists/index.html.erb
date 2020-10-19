@@ -17,6 +17,7 @@
         <td id="lista_<%=list.id%>_name" ><%= list.name %></td>
         <td id="lista_<%=list.id%>_user" ><%= list.user.name %></td>
         <td><%= link_to 'Show', list %></td>
+        <td><%= link_to "Favoritar", new_user_favorited_list_path(user_id: current_user.id, list_id: list.id) %></td>
      </tr>
     <% end %>
   </tbody>

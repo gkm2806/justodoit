@@ -1,0 +1,37 @@
+<%= form_for(@list, controller:'user/lists') do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+        <% list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shared %>
+    <%= form.check_box :shared %>
+  </div>
+
+  <h2>Items</h2>
+  <%= form.fields_for :items do |ff| %>
+    <div>
+      <%= ff.label :content %>
+      <%= ff.text_field :content %>
+
+
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -3,8 +3,8 @@ FactoryBot.define do
     name { 'Lista Compartilhada' }
     shared { true }
     user
-    
-    trait :private do 
+
+    trait :private do
       shared { false }
     end
   end

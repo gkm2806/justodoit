@@ -31,3 +31,25 @@
 
 en:
   hello: "Hello world"
+   active_record:
+    models:
+    attributes:
+      default_attributes: &default_attributes
+        id: '#'
+        created_at: creation date
+        updated_at: update date
+      list:
+        <<: *default_attributes
+        shared: public
+        checked: completed
+        user: owner
+  shared:
+    actions:
+      actions: actions
+      show: show
+      edit: edit
+      destroy: destroy
+      favorite: favorite
+    user_actions:
+      title: Welcome, %{name}!
+      unknown_title: Welcome, Mysterious Stranger!

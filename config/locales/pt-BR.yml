@@ -1,11 +1,4 @@
 pt-BR:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'A validação falhou: %{errors}'
-        restrict_dependent_destroy:
-          has_one: Não é possível excluir o registro pois existe um %{record} dependente
-          has_many: Não é possível excluir o registro pois existem %{record} dependentes
   date:
     abbr_day_names:
     - dom
@@ -220,3 +213,37 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  yes: sim
+  no: não
+  active_record:
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+    models:
+      list:
+        one: lista
+        other: listas
+    attributes:
+      default_attributes: &default_attributes
+        id: '#'
+        name: Nome
+        created_at: Data de criação
+        updated_at: Data de atualização
+      list:
+        <<: *default_attributes
+        shared: público
+        checked: completo
+        user: dono
+  shared:
+    actions:
+      actions: ações
+      show: mostrar
+      edit: editar
+      destroy: excluir
+      favorite: favoritar
+    user_actions:
+      title: Bem vindo, %{name}!
+      unknown_title: Bem vindo, estranho!

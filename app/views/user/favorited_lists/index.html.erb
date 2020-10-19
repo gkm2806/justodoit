@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Minhas Listas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Checked</th>
+      <th>Shared</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= list.checked %></td>
+        <td><%= list.shared %></td>
+        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to 'Remover', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New List', new_user_list_path %>

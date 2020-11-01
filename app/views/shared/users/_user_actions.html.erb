@@ -1,12 +1,13 @@
-<div class="user-actions">
-  <%if user%>
-    <h1 class="title"> <%= t('shared.user_actions.title', name: user.name) %></h1>
-    | <%= link_to "minhas listas", user_lists_path(user.id), class:"button1" %>
-    | <%= link_to "minhas favoritas", user_favorited_lists_path(user.id), class:"button1" %>
-  <%else%>
-    <h1 class="title"> <%= t('shared.user_actions.unknown_title') %> </h1>
-    | <%= link_to "log in", new_user_session_path, class:"button1" %>
-    | <%= link_to "sign up", new_user_registration_path, class:"button1" %>
-  <%end%>
-    | <%= link_to "index", lists_path, class:"button1" %> |
+<%if user%>
+  <h1> Bem vindo <%= user.name%>! </h1>
+  | <%= link_to "minhas listas", user_lists_path(user.id) %>
+  | <%= link_to "Minhas Favoritas", user_favorited_lists_path(user.id) %>
+<%else%>
+  <h1> Bem vindo, estranho! </h1>
+  | <%= link_to "Log in", new_user_session_path %>
+  | <%= link_to "Sign up", new_user_registration_path %>
+<%end%>
+  | <%= link_to "index", lists_path %> |
+<div class="notifications">
+
 </div>

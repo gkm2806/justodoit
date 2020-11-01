@@ -19,6 +19,6 @@ class ListsController < ApplicationController
   end
 
   def find_list
-    @list = List.includes(items: :items).find(params[:id])
+    @list = List.find(params[:id])
   end
 end

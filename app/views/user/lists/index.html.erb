@@ -2,25 +2,18 @@
 
 <h1>Minhas Listas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Checked</th>
-      <th>Shared</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="lists favorite-lists">
+  <%= render partial: 'shared/lists/list_table_header' %>
 
   <tbody>
     <% @lists.each do |list| %>
       <tr>
         <td><%= list.name %></td>
-        <td><%= list.checked %></td>
-        <td><%= list.shared %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= t(list.checked) %></td>
+        <td><%= t(list.shared) %></td>
+        <td><%= link_to t('shared.actions.show'), list, class:'button1' %></td>
+        <td><%= link_to t('shared.actions.edit'), edit_list_path(list), class:'button1'  %></td>
+        <td><%= link_to t('shared.actions.destroy'), list, method: :delete, data: { confirm: 'Are you sure?' }, class:'button1'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +21,4 @@
 
 <br>
 
-<%= link_to 'New List', new_user_list_path %>
+<%= link_to 'New List', new_user_list_path, class:'button1 new' %>

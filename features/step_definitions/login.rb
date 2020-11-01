@@ -31,5 +31,5 @@ Quando('ele digita a senha errada') do
 end
 
 Então('ele ver um erro na tela') do
-  expect(page).to have_selector '#flash_alert', text: 'Invalid Email or password'
+  expect(page).to have_selector '#flash_alert', text: 'Email ou senha inválida.'
 end

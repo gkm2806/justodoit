@@ -1,0 +1,13 @@
+
+<div class="item-card" id="item_<%=item.id%>">
+  <div class="item-card-header">
+    <div>
+      <%= button_to item_check_box(item), controller:'items', id: item.id, action: "toggle_checked" %>
+    </div>
+    <div> <%= item.content %> </div>
+  </div>
+  <%= render item.items %>
+  <div>
+    <%= render partial: "items/form", locals: {itemable: item.itemable, parent_id: item.id} %>
+  </div>
+</div>

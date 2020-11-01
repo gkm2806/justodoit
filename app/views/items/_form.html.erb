@@ -1,0 +1,7 @@
+<%= form_for [Item.new], local: true do |f| %>
+  <%= f.hidden_field :itemable_type, class: "form-controll", value: itemable.class %>
+  <%= f.hidden_field :itemable_id, class: "form-controll", value: itemable.id %>
+  <%= f.hidden_field :parent_id, class: "form-controll", value: local_assigns[:parent_id] %>
+  <%= f.text_field :content, class: "form-controll", placeholder: "Add new to-do" %>
+  <%= f.submit "+", class:"button1" %>
+<% end %> 

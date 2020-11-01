@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
   belongs_to :itemable, polymorphic: true
-  has_many :items, as: :itemable
+  belongs_to :parent, optional: true, class_name: 'Item'
+
+  validates :content, presence: true
+
+  def items
+    Item.where(itemable: itemable, parent_id: id)
+  end
 end

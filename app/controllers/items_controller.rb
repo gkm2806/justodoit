@@ -8,14 +8,14 @@ class ItemsController < ApplicationController
   end
 
   def toggle_checked
-    @item.update(checked: !@item.checked)
-    @item.parent.update(checked: @item.parent.items.pluck(:checked).reduce(:&)) unless @item.parent.nil?
-    @item.itemable.update(checked: @item.itemable.items.pluck(:checked).reduce(:&))
-    @item.items.update_all(checked: @item.checked)
+    response = Items::Toggle.call(item: @item)
 
-    marked = @item.checked ? 'marcado' : 'desmarcado'
+    flash[:notice] = if response.success?
+      response.result[:message]
+    else
+      response.error
+    end
 
-    flash[:notice] = "O item \"#{@item.content}\" foi #{marked}!"
     redirect_back fallback_location: root_path
   end
 

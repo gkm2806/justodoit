@@ -8,6 +8,7 @@ class Items::Toggle < BaseService
     update_parent
     update_children
     create_message
+    share_if_public
     response({ message: @message })
   end
 
@@ -26,5 +27,15 @@ class Items::Toggle < BaseService
   def create_message
     marked = @item.checked ? 'marcado' : 'desmarcado'
     @message = "O item \"#{@item.content}\" foi #{marked}!"
+  end
+
+  def share_if_public
+    itemable = @item.itemable
+    if itemable.shared
+      itemable.user_favorited_lists.each do |user_favorited|
+        quote = "#{itemable.user.name} atualizou a lista \"#{itemable.name}\""
+        ActionCable.server.broadcast "notifications:#{user_favorited.user.id}", { html: quote }
+      end
+    end
   end
 end

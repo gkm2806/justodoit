@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
       response[:error]
     end
 
-    redirect_back fallback_location: root_path
+    redirect_to @item.itemable
   end
 
   private
@@ -31,5 +31,12 @@ class ItemsController < ApplicationController
 
   def find_item
     @item = Item.find(params[:id])
+  end
+
+  def has_access
+    unless @itemable.user == current_user
+      flash[:notice] = 'Você não pode alterar essa lista =/'
+      redirect_to @itemable
+    end
   end
 end

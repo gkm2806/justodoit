@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_itemable, only: [:create, :show]
 
   def create
-    Item.create(item_params)
+    Items::Create.new(item_params).call
     redirect_to @itemable
   end
 

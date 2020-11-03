@@ -10,7 +10,10 @@ consumer.subscriptions.create("NotificationsChannel", {
   },
 
   received(data) {
-    $("#notifications").prepend(data.html)
     console.log(data)
+    let p = document.createElement("p")
+    let text = document.createTextNode(data.html)
+    p.appendChild(text);
+    document.querySelector(".notification-box").appendChild(p)
   }
 });

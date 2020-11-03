@@ -222,6 +222,11 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+      models:
+        user_favorited_list:
+          attributes:
+            list:
+              uniqueness: Lista já nos favoritos!
     models:
       list:
         one: lista
@@ -235,8 +240,12 @@ pt-BR:
       list:
         <<: *default_attributes
         shared: público
-        checked: completo
+        checked: completa
         user: dono
+      item:
+        <<: *default_attributes
+        content: Tarefa
+        checked: Completo
   shared:
     actions:
       actions: ações
@@ -245,6 +254,15 @@ pt-BR:
       destroy: excluir
       favorite: favoritar
       new_list: nova lista
+      confirm: Tem certeza?
     user_actions:
       title: Bem vindo, %{name}!
       unknown_title: Bem vindo, estranho!
+  views:
+    lists:
+      list_deleted: Lista excluida!
+      private_list: Essa lista é privada!
+      editing_list: Editando Lista
+    favorited_lists:
+      unfavorited: Lista removida dos favoritos :c
+      favorited: 'Lista adicionada aos favoritos! c:'

@@ -5,6 +5,7 @@ FactoryBot.define do
     user
 
     trait :private do
+      name { 'Lista Privada' }
       shared { false }
     end
   end

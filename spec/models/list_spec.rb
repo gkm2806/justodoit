@@ -6,11 +6,13 @@ RSpec.describe List, type: :model do
       @user = FactoryBot.create(:user)
       list = @user.lists.new
       expect(list.save).to eq(false)
+      expect(list.errors.full_messages).to eq(['Name não pode ficar em branco'])
     end
 
     it 'ensures belongs to an user' do
       list = List.new(name: 'Fazer Café')
       expect(list.save).to eq(false)
+      expect(list.errors.full_messages).to eq(['User é obrigatório(a)'])
     end
 
     it 'should save successfully' do

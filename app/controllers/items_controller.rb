@@ -14,12 +14,22 @@ class ItemsController < ApplicationController
     @item.items.update_all(checked: @item.checked)
 
     marked = @item.checked ? 'marcado' : 'desmarcado'
-
+    share_if_public
     flash[:notice] = "O item \"#{@item.content}\" foi #{marked}!"
     redirect_back fallback_location: root_path
   end
 
   private
+
+  def share_if_public
+    itemable = @item.itemable
+    if itemable.shared
+      itemable.user_favorited_lists.each do |user_favorited|
+        quote = "#{itemable.user.name} atualizou a lista \"#{itemable.name}\""
+        ActionCable.server.broadcast "notifications:#{user_favorited.user.id}", { html: quote }
+      end
+    end
+  end
 
   def find_itemable
     @itemable = item_params[:itemable_type].classify.constantize.find(item_params[:itemable_id])

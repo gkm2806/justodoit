@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'lists#index'
+  mount ActionCable.server => '/ws'
   devise_for :users
 
   resources :lists

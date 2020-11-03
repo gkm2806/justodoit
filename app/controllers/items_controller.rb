@@ -8,12 +8,12 @@ class ItemsController < ApplicationController
   end
 
   def toggle_checked
-    response = Items::Toggle.call(item: @item)
+    response = Items::Toggle.new(@item).call
 
-    flash[:notice] = if response.success?
-      response.result[:message]
+    flash[:notice] = if response[:success?]
+      response[:result][:message]
     else
-      response.error
+      response[:error]
     end
 
     redirect_back fallback_location: root_path

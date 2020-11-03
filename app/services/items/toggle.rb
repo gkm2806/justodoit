@@ -5,8 +5,8 @@ class Items::Toggle < BaseService
 
   def call
     update_self
-    update_parent
-    update_children
+    go_down_to_leafs(@item)
+    go_up_to_root(@item)
     create_message
     share_if_public
     response({ message: @message })
@@ -16,12 +16,23 @@ class Items::Toggle < BaseService
     @item.update(checked: !@item.checked)
   end
 
-  def update_parent
-    @item&.parent&.update(checked: @item.parent.items.pluck(:checked).reduce(:&))
+  def go_down_to_leafs(item)
+    return if item.nil?
+    item.items.each do |child|
+      child.update(checked: child.parent.checked)
+      go_down_to_leafs(child) if child.items.present?
+    end
   end
 
-  def update_children
-    @item&.items&.update_all(checked: @item.checked)
+  def go_up_to_root(item)
+    # "But roots are on buttom" Dude I'm not the one making conventions here
+    return if item.nil?
+    if item&.parent.present?
+      item.parent.update(checked: item.parent.items.pluck(:checked).reduce(:&))
+    else
+      item.itemable.update(checked: item.itemable.items.pluck(:checked).reduce(:&))
+    end
+    go_up_to_root(item.parent)
   end
 
   def create_message

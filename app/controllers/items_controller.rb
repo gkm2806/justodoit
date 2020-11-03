@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:toggle_checked]
-  before_action :find_itemable, only: [:create, :show]
+  before_action :find_itemable, only: [:create, :show, :toggle_checked]
+  before_action :has_access
 
   def create
     Items::Create.new(item_params).call
@@ -22,7 +23,7 @@ class ItemsController < ApplicationController
   private
 
   def find_itemable
-    @itemable = item_params[:itemable_type].classify.constantize.find(item_params[:itemable_id])
+    @itemable = @item&.itemable || item_params[:itemable_type].classify.constantize.find(item_params[:itemable_id])
   end
 
   def item_params

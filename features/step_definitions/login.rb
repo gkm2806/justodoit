@@ -5,7 +5,12 @@ Dado('que testenildo conecta no app') do
 end
 
 Dado('existe uma lista pública') do
-  @list = FactoryBot.create(:list)
+  @shared_list = FactoryBot.create(:list)
+end
+
+Dado('uma privada') do
+  random_user = User.create(name: 'why_database_cleaner_is_not_doing_its_job', password: 'secret123', email: 'test@test.com')
+  @private_list = List.create(name: 'Lista Privada', shared: false, user: random_user)
 end
 
 Quando('entra com as suas credênciais') do
@@ -18,8 +23,9 @@ Quando('entra com as suas credênciais') do
   end
 end
 
-Então('ele deve ver as listas públicas') do
-  expect(page).to have_selector 'td', text: 'Lista Compartilhada'
+Então('ele deve ver somente a lista pública') do
+  expect(page).to have_selector 'td', text: @shared_list.name
+  expect(page).not_to have_selector 'td', text: @private_list.name
 end
 
 Quando('ele digita a senha errada') do

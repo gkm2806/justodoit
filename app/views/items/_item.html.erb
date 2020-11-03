@@ -8,6 +8,8 @@
   </div>
   <%= render item.items %>
   <div>
-    <%= render partial: "items/form", locals: {itemable: item.itemable, parent_id: item.id} %>
+    <% if current_user == item.itemable.user %>
+      <%= render partial: "items/form", locals: {itemable: item.itemable, parent_id: item.id} %>
+    <% end %>
   </div>
 </div>

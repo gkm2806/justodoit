@@ -16,9 +16,10 @@
 </p>
 
 <%= render @list.items.where(parent_id: nil), locals: {itemable: @list} %>
-<%= render partial: "items/form", locals: {itemable: @list} %>
 
+<% if current_user == @list.user %>
+  <%= render partial: "items/form", locals: {itemable: @list} %>
+<% end %>
 <hr />
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

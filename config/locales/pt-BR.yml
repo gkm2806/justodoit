@@ -244,6 +244,7 @@ pt-BR:
       edit: editar
       destroy: excluir
       favorite: favoritar
+      new_list: nova lista
     user_actions:
       title: Bem vindo, %{name}!
       unknown_title: Bem vindo, estranho!

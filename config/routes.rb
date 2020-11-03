@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :users do
       resources :lists
-      resources :favorited_lists
+      resources :favorited_lists do
+        member do
+          post :unfavorite
+        end
+      end
     end
   end
 end

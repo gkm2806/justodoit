@@ -12,7 +12,7 @@
         <td><%= t(list.checked) %></td>
         <td><%= t(list.shared) %></td>
         <td><%= link_to t('shared.actions.show'), list, class:'button1' %></td>
-        <td><%= link_to t('shared.actions.destroy'), list, method: :delete, data: { confirm: 'Are you sure?' }, class:'button1'  %></td>
+        <td><%= link_to t('shared.actions.destroy'), unfavorite_user_favorited_list_path(id: list.id), method: :destroy, class:'button1'  %></td>
       </tr>
     <% end %>
   </tbody>

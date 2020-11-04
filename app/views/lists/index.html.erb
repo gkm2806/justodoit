@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listas Públicas</h1>
+
+<table class="lists">
+  <thead>
+    <tr>
+      <th> <%= t('active_record.attributes.list.name')%> </th>
+      <th> <%= t('active_record.attributes.list.user')%> </th>
+      <th colspan="3"> <%= t('shared.actions.actions')%> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr class='list' id="list_<%=list.id%>">
+        <td id="list_<%=list.id%>_name" ><%= list.name %></td>
+        <td id="list_<%=list.id%>_user" ><%= list.user.name %></td>
+        <td><%= link_to t('shared.actions.show'), list, class:'button1' %></td>
+        <td><%= link_to t('shared.actions.favorite'), new_user_favorited_list_path(user_id: current_user.id, list_id: list.id), class:'button1' %></td>
+     </tr>
+    <% end %>
+  </tbody>
+</table>

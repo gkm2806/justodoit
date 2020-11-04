@@ -1,0 +1,16 @@
+<%= form_for(@list, controller:'user/lists') do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shared %>
+    <%= form.check_box :shared %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

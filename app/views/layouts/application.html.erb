@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%- end -%>  
+    <%= render partial: 'shared/users/user_actions', locals: {user: current_user} %>
+    <main>
+      <%= yield %>
+    </main>
+    <div class="notifications" >
+      <h5> Notificações </h5>
+      <div class="notification-box" />
+    </div>
   </body>
 </html>

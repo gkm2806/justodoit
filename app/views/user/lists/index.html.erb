@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Minhas Listas</h1>
+
+<table class="lists favorite-lists">
+  <%= render partial: 'shared/lists/list_table_header' %>
+
+  <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+        <td><%= list.name %></td>
+        <td><%= t(list.checked) %></td>
+        <td><%= t(list.shared) %></td>
+        <td><%= link_to t('shared.actions.show'), list, class:'button1' %></td>
+        <td><%= link_to t('shared.actions.edit'), edit_list_path(list), class:'button1'  %></td>
+        <td><%= link_to t('shared.actions.destroy'), list, method: :delete, data: { confirm: t('shared.actions.confirm') }, class:'button1'  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('shared.actions.new_list'), new_user_list_path, class:'button1 new' %>

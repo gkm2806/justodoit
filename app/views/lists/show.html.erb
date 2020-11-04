@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @list.name %>
+</p>
+
+<p>
+  <strong>Completa?:</strong>
+  <%= @list.checked %>
+</p>
+
+<p>
+  <strong>Pública?:</strong>
+  <%= @list.shared %>
+</p>
+
+<%= render @list.items.where(parent_id: nil), locals: {itemable: @list} %>
+
+<% if current_user == @list.user %>
+  <%= render partial: "items/form", locals: {itemable: @list} %>
+<% end %>
+<hr />
+
+<%= link_to 'Back', lists_path %>

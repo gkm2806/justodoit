@@ -1,0 +1,8 @@
+<li style="display: block; margin-bottom: 0.2rem" id="item_<%=item.id%>">
+  <div style="display: flex; flex-wrap: no-wrap, width: 100%, margin-top: 2rem">
+    <div style="margin-left: <%=depth%>rem">
+      <%= button_to item_check_box(item), controller:'items', id: item.id, action: "toggle_checked" %>
+    </div>
+    <div> <%= item.content %> <div>
+  </div>
+</li>
